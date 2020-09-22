@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.run {
             observe(eventFlow) {
                 Log.d(TAG, "action: $it")
-                Toast.makeText(this@MainActivity, it.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
             }
-            observe(stateFlow) {
+            observe(counterStateFlow) {
                 Log.d(TAG, "collect value: $it")
                 textview_count.text = "$it"
             }

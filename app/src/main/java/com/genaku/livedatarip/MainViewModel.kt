@@ -8,18 +8,18 @@ import kotlinx.coroutines.FlowPreview
 @ExperimentalCoroutinesApi
 class MainViewModel : ViewModel() {
 
-    val stateFlow = ViewStateFlow<Int?>(null)
-    val eventFlow = ViewEventFlow<Event>()
+    val counterStateFlow = ViewStateFlow<Int?>(null)
+    val eventFlow = ViewEventFlow<String>()
 
     fun mess() {
-        eventFlow.postEvent(Event(stateFlow.value.toString()))
+        eventFlow.postEvent(counterStateFlow.value.toString())
     }
 
     fun incrementCount() {
-        stateFlow.postValue((stateFlow.value ?: 0) + 1)
+        counterStateFlow.postValue((counterStateFlow.value ?: 0) + 1)
     }
 
     fun decrementCount() {
-        stateFlow.postValue((stateFlow.value ?: 0) - 1)
+        counterStateFlow.postValue((counterStateFlow.value ?: 0) - 1)
     }
 }
