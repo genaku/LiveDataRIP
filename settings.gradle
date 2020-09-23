@@ -1,2 +1,3 @@
+include ':livedatarip'
 include ':app'
 rootProject.name = "LiveDataRIP"
