@@ -1,6 +1,8 @@
-package com.genaku.livedatarip
+package com.genaku.livedataripsample
 
 import androidx.lifecycle.ViewModel
+import com.genaku.livedatarip.ViewEventFlow
+import com.genaku.livedatarip.ViewStateFlow
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 

@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.genaku.livedatarip"
+        applicationId "com.genaku.livedataripsample"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -47,5 +47,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
-    implementation project(path: ':livedatarip')
+
+//    implementation project(path: ':livedatarip')
+    implementation 'com.github.genaku:LiveDataRIP:0.9'
 }
