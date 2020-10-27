@@ -18,6 +18,9 @@ class ViewStateFlow<T>(initial: T) : StateFlow<T> {
     override suspend fun collect(collector: FlowCollector<T>) =
         innerState.collect(collector)
 
+    override val replayCache: List<T>
+        get() = innerState.replayCache
+
     fun postValue(value: T) {
         innerState.value = value
     }
