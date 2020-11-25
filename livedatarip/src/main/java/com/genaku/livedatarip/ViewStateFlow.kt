@@ -5,6 +5,12 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+/**
+ * View state flow
+ *
+ * @param T - type of view state value
+ * @param [T] - initial value of view state
+ */
 class ViewStateFlow<T>(initial: T) : StateFlow<T> {
 
     private val innerState = MutableStateFlow(initial)

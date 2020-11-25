@@ -5,6 +5,12 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+/**
+ * View event flow
+ * Version on state flow that emits state only when it's not collected
+ *
+ * @param T - type of event value
+ */
 class ViewEventFlow<T> : StateFlow<Event<T>> {
 
     private val innerState = MutableStateFlow(Event<T>(null))
