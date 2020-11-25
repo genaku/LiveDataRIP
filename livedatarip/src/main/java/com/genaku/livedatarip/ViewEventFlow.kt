@@ -1,24 +1,25 @@
 package com.genaku.livedatarip
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector
-import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
-@ExperimentalCoroutinesApi
-@FlowPreview
-class ViewEventFlow<T> : Flow<T> {
+class ViewEventFlow<T> : StateFlow<Event<T>> {
 
-    private val eventSender = BroadcastChannel<T>(1)
-    private val eventReceiver = eventSender.asFlow()
+    private val innerState = MutableStateFlow(Event<T>(null))
+
+    override val value: Event<T>
+        get() = innerState.value
 
     @InternalCoroutinesApi
-    override suspend fun collect(collector: FlowCollector<T>) = eventReceiver.collect(collector)
+    override suspend fun collect(collector: FlowCollector<Event<T>>) =
+        innerState.collect(collector)
+
+    override val replayCache: List<Event<T>>
+        get() = innerState.replayCache
 
     fun postEvent(event: T) {
-        eventSender.offer(event)
+        innerState.value = Event(event)
     }
 }

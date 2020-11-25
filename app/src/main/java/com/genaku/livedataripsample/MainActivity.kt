@@ -43,11 +43,11 @@ class MainActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.run {
             observe(eventFlow) {
-                Log.d(TAG, "action: $it")
+                Log.d(TAG, "event: $it")
                 Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
             }
             observe(counterStateFlow) {
-                Log.d(TAG, "collect value: $it")
+                Log.d(TAG, "value: $it")
                 textview_count.text = "$it"
             }
         }
