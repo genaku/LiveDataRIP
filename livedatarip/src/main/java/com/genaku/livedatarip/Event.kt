@@ -3,7 +3,7 @@ package com.genaku.livedatarip
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
- * Used as a wrapper for data that is exposed via LifecycleOwner that represents an event.
+ * Used as a wrapper for data that is exposed via ViewEventFlow that represents an event.
  */
 open class Event<out T>(val content: T?) {
 

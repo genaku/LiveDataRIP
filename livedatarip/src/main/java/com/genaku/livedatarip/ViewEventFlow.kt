@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 /**
- * View event flow
- * Version on state flow that emits state only when it's not collected
+ * View event flow.
+ * Version on state flow that emits state only when it's not collected.
  *
  * @param T - type of event value
  */
