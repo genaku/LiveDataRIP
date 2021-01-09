@@ -6,7 +6,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.genaku.livedatarip.observe
+import com.genaku.livedatarip.observeState
+import com.genaku.livedatarip.observeEvent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         observeViewModel()
         initUI()
     }
@@ -42,11 +42,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.run {
-            observe(eventFlow) {
+            observeEvent(eventFlow) {
                 Log.d(TAG, "event: $it")
                 Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
             }
-            observe(counterStateFlow) {
+            observeState(counterStateFlow) {
                 Log.d(TAG, "value: $it")
                 textview_count.text = "$it"
             }
